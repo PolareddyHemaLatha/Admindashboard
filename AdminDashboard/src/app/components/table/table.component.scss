@@ -1,0 +1,60 @@
+/* table.component.css */
+
+.table-container {
+  max-width: 800px;
+  margin: 0 auto;
+ 
+}
+
+input[type="text"] {
+  padding: 8px;
+  width: 60%; /* Adjust the width as needed */
+  margin-bottom: 10px;
+  box-sizing: border-box;
+  margin-right: 10px;
+ 
+}
+
+button.search-icon {
+  padding: 8px;
+  background-color: #4caf50; /* Green color, adjust as needed */
+  color: white;
+  border: none;
+  cursor: pointer;
+  
+
+}
+
+button.search-icon:hover {
+  background-color: #45a049; /* Darker green color on hover, adjust as needed */
+}
+
+/* Add more styling as needed for the table, e.g., borders, spacing, etc. */
+table {
+  width: 80%;
+  border-collapse: collapse;
+  margin-left: auto;
+  margin-right: auto;
+
+}
+
+table, th, td {
+  border: 1px solid #ddd;
+}
+
+th, td {
+  padding: 12px;
+  text-align: left;
+}
+
+th {
+  background-color: #f2f2f2; /* Light gray background for table headers */
+}
+button.edit-button {
+  margin-right: 10px; /* You can adjust the value as needed */
+}
+
+/* Add margin to the left of the Delete button */
+button.delete-button {
+  margin-left: 10px; /* You can adjust the value as needed */
+}

@@ -1,0 +1,50 @@
+<!-- table.component.html -->
+
+<div class="table-container">
+  <div class="search-container">
+    <input type="text" [(ngModel)]="searchQuery" placeholder="Search" />
+    <button class="search-icon" (click)="onSearch()">Search</button>
+  </div>
+
+  <table>
+    <thead>
+      <tr>
+        <th>
+          <input type="checkbox" (change)="selectAllRows($event)" />
+        </th>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr *ngFor="let user of (filteredUsers.length > 0 ? filteredUsers : users)" [class.selected]="user.isSelected">
+        <td>
+          <input type="checkbox" [(ngModel)]="user.isSelected" (change)="selectRow(user)" />
+        </td>
+        <td>{{ user.id }}</td>
+        <td>{{ user.name }}</td>
+        <td>{{ user.email }}</td>
+        <td>
+          <button (click)="editUser(user)" class="edit-button">Edit</button>
+          <button (click)="deleteUser(user)" class="delete-button">Delete</button>
+        </td>
+      </tr>
+    </tbody>
+
+    <tfoot>
+      <tr>
+        <td colspan="5">
+          <app-pagination
+            [totalItems]="totalItems"
+            [itemsPerPage]="itemsPerPage"
+            [currentPage]="currentPage"
+            (pageChange)="onPageChange($event)"
+          ></app-pagination>
+        </td>
+      </tr>
+    </tfoot>
+  </table>
+</div>
