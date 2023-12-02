@@ -1,5 +1,8 @@
-<!-- app.component.html -->
+<div class="center-container" *ngIf="showWelcomeNote">
+  <div class="welcome-note">
+    <h1>Welcome to Admin Dashboard</h1>
+    <p style="color: red">Please wait; you will be redirected in {{ countdownSeconds }} seconds.</p>
+  </div>
+</div>
 
-<app-dashboard>
-  <h1>Admin Dashboard</h1>
-</app-dashboard>
+<app-dashboard *ngIf="!showWelcomeNote"></app-dashboard>

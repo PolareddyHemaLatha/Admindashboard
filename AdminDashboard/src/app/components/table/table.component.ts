@@ -1,7 +1,7 @@
 import {  Component, Input, Output, EventEmitter } from '@angular/core';
 interface Row {
   isSelected: boolean;
-  // Add other properties for your row data
+ 
 }
 @Component({
   selector: 'app-table',
@@ -18,14 +18,23 @@ export class TableComponent {
   filteredUsers: any[] = [];
   searchQuery: string = '';
   displayedRows: Row[] = [];
+  editingName: { [key: number]: boolean } = {};
+  editingEmail: { [key: number]: boolean } = {};
   
-  editUser(user: any) {
-    // Implement logic for editing a user
-    console.log('Editing user:', user);
-  }
+  isEditing: { [key: string]: boolean } = {};
+  isEditingName: { [key: number]: boolean } = {};
+isEditingEmail: { [key: number]: boolean } = {};
 
+
+editUser(user: any, field: string): void {
+  if (field === 'Name') {
+    this.isEditingName[user.id] = !this.isEditingName[user.id];
+  } else if (field === 'Email') {
+    this.isEditingEmail[user.id] = !this.isEditingEmail[user.id];
+  }
+}
   deleteUser(user: any) {
-    // Implement logic for deleting a user
+   
     console.log('Deleting user:', user);
   }
   onPageChange(pageNumber: number): void {
@@ -47,12 +56,12 @@ export class TableComponent {
     this.users.forEach((user) => (user.isSelected = isChecked));
   }
   selectRow(row: Row): void {
-    // Handle individual row selection
+  
   }
-  private applySearch(query: string): void {
-    this.filteredUsers = this.users.filter(user =>
-      user.name.toLowerCase().includes(query.toLowerCase())
-    );
+  deleteSelectedRows() {
+    const selectedRows = this.users.filter(user => user.isSelected);
+    console.log('Deleting selected rows:', selectedRows);
   }
+ 
 
 }

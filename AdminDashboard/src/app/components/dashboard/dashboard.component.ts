@@ -1,11 +1,5 @@
-// dashboard.component.ts
-
 import { Component, OnInit } from '@angular/core';
 import { AdminService } from '../admin.service';
-
-import { TableComponent } from '../table/table.component';
-
-
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
@@ -16,9 +10,7 @@ export class DashboardComponent implements OnInit {
   currentPage: number = 1;
   itemsPerPage: number = 10;
   searchQuery: string = '';
-
-
-  constructor(private adminService: AdminService) {}
+constructor(private adminService: AdminService) {}
 
   ngOnInit() {
     this.adminService.fetchData().subscribe(data => {
@@ -36,12 +28,7 @@ export class DashboardComponent implements OnInit {
   }
   onTableSearch(query: string): void {
     this.searchQuery = query;
-    this.currentPage = 1; // Reset to the first page when searching
+    this.currentPage = 1; 
   }
 
-  private filterUsers(): any[] {
-    // Implement your filtering logic based on this.searchQuery
-    // Return the filtered users array
-    return this.users;
-  }
 }
